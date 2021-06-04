@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ISMYNR
+ * @author GUNA DERMAWAN
  */
 public class queue extends javax.swing.JFrame {
     /**
@@ -40,13 +40,13 @@ public class queue extends javax.swing.JFrame {
         txtAtas7.setText("--------");
     }
     private void tambahAntrian(){
-        nomor++;
-        String antr = "Antrian "+nomor;
-        antrian.add(antr);
-        String cvt = String.valueOf(antrian.size());
-        lbJmlAntrian.setText(cvt);
-        lbPanggilAntrian.setText(""+antrian.peek());
-        lbTotalAntrian.setText(""+nomor);
+        nomor++; // buat nambahin nomor antrian biar rekursif
+        String antr = "Antrian "+nomor; // menyimpan kedalam variabel
+        antrian.add(antr); //menambah antrian ke list(buat nyimpen datanya)
+        String cvt = String.valueOf(antrian.size());// mengambil panjang list
+        lbJmlAntrian.setText(cvt);// meng set text komponen agar menampilkan panjang list
+        lbPanggilAntrian.setText(""+antrian.peek()); // menampilkan data urutan teratas
+        lbTotalAntrian.setText(""+nomor); // nampilin ada berapa antrian
         txtAntrian.append(antr + "\n");
         
         txtAtas3.setText("Jumat, 4 Juni 2021");
@@ -56,13 +56,13 @@ public class queue extends javax.swing.JFrame {
         txtAtas7.setText("Mohon untuk bersabar");
     }
     private void prosesAntrian(){
-        if(antrian.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Ambil Nomor antrian terlebih dahulu !");
+        if(antrian.isEmpty()){ // kalo antrian kosong
+            JOptionPane.showMessageDialog(this, "Mohon Ambil Nomor antrian terlebih dahulu !");
         }
-        txtAntrian.setText("");
-        antrian.poll();
+        txtAntrian.setText(""); // mengkosongkan textarea list antrian
+        antrian.poll(); // mengambil antrian
         antrian.forEach((Object element) -> {
-            txtAntrian.append("" + element + "\n");
+            txtAntrian.append("" + element + "\n"); // mencetak semua antrian kedalam text area list
         });
         if(antrian.isEmpty()){
             lbPanggilAntrian.setText("-----");
